@@ -1,0 +1,134 @@
+:root {
+  --paper: #f7f8f5;
+  --ink: #152a40;
+  --muted: #65727d;
+  --orange: #ff622e;
+  --line: #d9dee0;
+  --sans: "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--paper); }
+body { margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--ink); color: var(--paper); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.skip-link { position: fixed; z-index: 10; top: 1rem; left: 1rem; padding: .75rem 1rem; transform: translateY(-200%); background: var(--ink); color: var(--paper); }
+.skip-link:focus { transform: translateY(0); }
+
+.page-shell {
+  display: flex;
+  width: min(100%, 100rem);
+  min-height: 100svh;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  flex-direction: column;
+}
+
+.site-header, .site-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header { min-height: 6.1rem; gap: 1.5rem; border-bottom: 1px solid var(--line); }
+.wordmark { padding-block: .65rem; font-size: 1.35rem; font-weight: 650; letter-spacing: -.065em; }
+.wordmark span { color: #bd4317; }
+.header-note, .site-footer { color: var(--muted); font-family: var(--mono); font-size: .65rem; font-weight: 400; letter-spacing: .04em; }
+.header-note { text-align: right; }
+
+.stealth {
+  position: relative;
+  display: grid;
+  min-height: 35rem;
+  flex: 1;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 5rem);
+  padding: 3rem clamp(0rem, 2vw, 2rem);
+}
+
+.identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 29rem;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  animation: arrive .9s ease both;
+}
+.brand-title { width: 100%; margin: 0; line-height: 0; }
+.brand-logo { display: block; width: 100%; height: auto; }
+.tagline {
+  width: 100%;
+  margin: 1.6rem 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: clamp(.95rem, 1.3vw, 1.1rem);
+  letter-spacing: -.02em;
+}
+.stealth-label {
+  display: inline-flex;
+  min-height: 2.6rem;
+  margin: 3.25rem 0 0;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.status-light {
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 .22rem rgba(255, 98, 46, .08);
+}
+.signal-field {
+  width: 100%;
+  max-width: 38rem;
+  justify-self: end;
+  pointer-events: none;
+  animation: arrive 1.2s ease both;
+}
+.signal-field img { display: block; width: 100%; height: auto; max-height: 30rem; object-fit: contain; }
+
+.site-footer { min-height: 5rem; gap: 1rem; border-top: 1px solid var(--line); }
+.footer-mark { position: absolute; left: 50%; display: flex; gap: .75rem; transform: translateX(-50%); }
+.footer-mark i { width: .22rem; height: .22rem; border-radius: 50%; background: var(--orange); }
+
+@keyframes arrive {
+  from { opacity: .1; transform: translateY(.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 48rem) {
+  .site-header { min-height: 5rem; }
+  .header-note { max-width: 10rem; font-size: .57rem; }
+  .stealth {
+    min-height: 39rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: .5rem;
+    padding: 3.75rem 0 1rem;
+  }
+  .identity { max-width: 26rem; padding: 0; justify-self: center; }
+  .tagline { margin: 1.25rem 0 0; }
+  .stealth-label { margin: 1.6rem 0 0; font-size: .62rem; }
+  .signal-field { width: min(80%, 19rem); margin: -1rem -.75rem -.5rem 0; }
+  .site-footer { min-height: 5rem; align-items: flex-start; justify-content: center; flex-direction: column; gap: .4rem; font-size: .56rem; }
+  .footer-mark { right: 0; left: auto; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+}
+@media (forced-colors: active) {
+  .signal-field { display: none; }
+  .status-light, .footer-mark i { background: CanvasText; }
+}
