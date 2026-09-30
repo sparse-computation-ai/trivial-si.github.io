@@ -2,8 +2,9 @@
 
 A minimal stealth landing page for **trivial.si**, using the supplied Trivial
 branding and the paper, navy and orange palette from the eHive Slidev deck.
-The layout pairs a sparse field of signal marks with a flat navy `trivial`
-wordmark, orange dots, and a centered **SuperIntelligence** descriptor.
+The layout centers the presentation-style logo in open space, with two subtle
+paper planes and a thin orange seam. Mouse movement gently shifts the paper;
+reduced motion preferences keep it still.
 Plain HTML and CSS, with a small script to keep the copyright year current;
 no build step, external fonts, analytics or cookies.
 
